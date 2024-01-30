@@ -3,10 +3,12 @@ import SearchBox from '@/components/SearchBox'
 import ShowTable from '@/components/ShowTable';
 import { Property } from '@/lib/interfaces';
 import { useState } from 'react';
+import { useToast } from "@/components/ui/use-toast"
 
 
 
 export default function Home() {
+  const { toast } = useToast()
 
   // let items:Property[] = [];
   const [items, setItems] = useState<Property[]>([]);
@@ -17,6 +19,12 @@ export default function Home() {
     })
     let data = await response.json();
     setItems(data);
+    if(data.length == 0){
+      toast({
+        title: "Warning!!",
+        description: "No data found",
+      })
+    }
   }
 
   

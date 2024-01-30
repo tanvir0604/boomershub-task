@@ -29,7 +29,7 @@ export default function ShowTable(props: {items:Property[]|[]}) {
                     <TableBody>
                         {props.items.map((item:Property, index:number) => (
                             <TableRow key={index}>
-                                <TableCell className="font-medium">{item.name}</TableCell>
+                                <TableCell className="font-medium text-blue-500"><Link href={`/${item.id}`}>{item.name}</Link></TableCell>
                                 <TableCell>{item.state}</TableCell>
                                 <TableCell>{item.city}</TableCell>
                                 <TableCell className="text-right">{item.country}</TableCell>
